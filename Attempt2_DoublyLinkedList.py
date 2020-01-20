@@ -185,35 +185,42 @@ class DoublyLinkedList:
     # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 
     # Attempting to create a function for 'find'
-    def _findingElementByValue_(self,x):
+    def find_element_by_value(self, x):
 
+        # for checking first node and finding the beginning number
         if self.start_node is None:
-            print( "The list has no element to delete.")
+            print("The list has no element to delete")
             return
         if self.start_node.nref is None:
-            if self.start_node.item ==x:
-                self.start_node = self.start_node
-                print("We have found item ", x, "on the list.")
+            if self.start_node.item == x:
+                print('Item found.')
+
             else:
-                print("Item not found.")
-                return
+                print("Item not found")
+            return
 
-            n = self.start_node
-            while n.nref is not None:
-                if n.item == x:
-                    print("We have found item ", x, "on the list again.")
+        if self.start_node.item == x:
+            print("This is the item2.")
+            self.start_node = self.start_node
+            self.start_node.pref = None
+            return
+        # for finding the middle numbers
+        n = self.start_node
+        while n.nref is not None:
+            if n.item == x:
+                print("This could be the item.")
+                break
+            n = n.nref
 
-                    n = n.nref
-                if n.nref is not None:
-                    n.pref.nref = n.nref
-                    n.nref.pref = n.pref
-
-                else:
-                    if n.item == x:
-                        print("We have found item ", x, "on the list again.")
-                    else:
-                        print("Element not found.")
-
+        # for finding the end number
+        if n.nref is not None:
+            n.pref.nref = n.nref
+            n.nref.pref = n.pref
+        else:
+            if n.item == x:
+                print("This is the item3.")
+            else:
+                print("Element not found")
 
 DoublyLinkedList()
 
@@ -250,6 +257,12 @@ class Main():
 
     print("Demonstrating removing node specified via value (pointer/reference); will remove the value 50 from the list:")
     new_linked_list.delete_element_by_value(50)
+    new_linked_list.traverse_list()
+    print('\n')
+
+    print("Finding the number 10 to fulfill the assignment 'finding an element by value:")
+    new_linked_list.find_element_by_value(300)
+    print('\n')
     new_linked_list.traverse_list()
     print('\n')
 
