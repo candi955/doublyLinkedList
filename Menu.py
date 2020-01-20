@@ -1,3 +1,9 @@
+# Created a program (program created by me, but most of the doubly list template is from the reference listed below),
+# on this module that a user can utilize to implement a doubly linked list and add numbers to it, or
+# exit the program if desired.
+
+# At this time, the program is very simple, but can be made to be more complicated at a later date if so desired,
+# in which the functions could be called upon by the user in various ways.
 
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 class Node:
@@ -214,12 +220,10 @@ class mainMenu():
 
     newList = DoublyLinkedList()
 
+    print("\nWelcome to the DoublyLinked List Program\n")
     print("Program choice key:\n" +
-          "1 - for Enter number in empty list\n" +
-          "2 - for Insert number at start of list\n" +
-          "3 - Insert number at end of the list" +
-          "4 - Insert number after another number of your choice" +
-          "5 - ")
+          "1 - To start a doubly linked list by entering a number \n" +
+          "2 - To exit the program\n")
 
     print('\n')
 
@@ -235,5 +239,38 @@ class mainMenu():
         newList.insert_in_emptylist(userNum)
         newList.traverse_list()
 
+        while True:
+            try:
+                userContinue = str(input('Please enter 1 to add another number, or 2 to exit: '))
+
+                if userContinue == "1":
+                    userNum = str(input('Please enter the number on the list that you would like to place your number after:'))
+                    chosenUserNum = int(userNum)
+
+                    userNum2 = str(input('Please enter the number your would like to place into the list:'))
+                    chosenUserNum2 = int(userNum2)
+
+                    print('Please see your list as follows:')
+
+                    newList.insert_after_item(userNum, userNum2)
+                    newList.traverse_list()
+
+                if userContinue == "2":
+
+                    print("Thank you for interacting with our program. Goodbye.")
+                    exit()
+
+            except ValueError:
+                print("An error has occurred")
+
+            else:
+                print("An error occurred. Please try the program again.")
+
+    if userChoice == "2":
+        print("Thank you for interacting with our program. Goodbye.")
+        exit()
+
+    else:
+        print("An error occurred. Please try the program again.")
 
 mainMenu()

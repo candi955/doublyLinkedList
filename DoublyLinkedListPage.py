@@ -15,7 +15,13 @@
 # I practiced traversing the list with a copy of an example from the referenced StackAbuse website, and now am ready to
 # begin the project by implementing various functionality including Find, Insert, Remove (data), Remove (node), and
 # Print.
-# 1/19/2020 @ 19:21 - I have begun working on the Menu page for the user-menu. 
+# 1/19/2020 @ 19:21 - I have begun working on the Menu page for the user-menu.
+# 1/20/2020 @ 01:58 pm - I just realized that I might have done a little more than the assignment asked by creating
+# my Menu.py module program for a user, but I'm glad I did in that the concept might be a useful template for future
+# list-building projects of which I wish to have user-interaction when it comes to list creation or modification.  It
+# was a good learning experience.
+# Now I am going to continue with the last parts of the project, with random number addition and deletion and timing
+# of these processes (on the DoublyLinkedListPage.py module.   I will then video my project and turn it in.
 
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 class Node:
