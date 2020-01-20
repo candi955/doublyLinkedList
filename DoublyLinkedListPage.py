@@ -35,6 +35,7 @@
 
 import random
 import time
+import numpy as np
 
 
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
@@ -337,6 +338,8 @@ class Main():
     new_linked_list.traverse_list()
     print('\n')
 
+# __________________________________________________________________________________________________________________
+
     # Beginning the testing phase of the project
     # I will be timing how long it takes to create arrays versus linked lists of random numbers, as well as how
     # long it takes to delete the numbers.  I have decided to use the same amount of numbers for sampling, in case
@@ -346,46 +349,58 @@ class Main():
     # this experiment, maintaining integrity of sampling numbers across the various components should satisfy the
     # requirements.
 
-
-    #  My array creations are as follows
-    # These first arrays are to time the inserting of random numbers into an array
-    print("Placing 100 random numbers into an array:")
-    for x in range(100):
-
-        start_time = time.time()
-        array100 = random.randint(1, 101)
-        array100 = [array100]
-        end_time = time.time()
-
-        duration = end_time - start_time
-        print('\nPrinting the duration of inserting 100 random numbers into the array:')
-        print(duration)
-
-        print(array100)
-        print('\n')
-
-        for i in array100:
-            if i + 1:
-
-                print("Clearing 100 random numbers from an array:")
-                array100.remove(i)
-                print(array100)
-                print('\n')
-            else:
-                print('Error')
-
-
-    print("Placing 1,000 random numbers into an array:")
-    array1000 = str(random.sample(range(1, 1001), 1000))
-    print(array1000)
+# **************************************************************************************************************
+    start_time100 = time.time()
+    array100 = np.array(random.sample(range(1, 101), 100))
+    end_time100 = time.time()
+    duration100create = end_time100 - start_time100
+    print(array100)
     print('\n')
 
-    print("Placing 10,000 random numbers into an array:")
-    array10000 = str(random.sample(range(1, 10001), 10000))
-    print(array10000)
+    # Creating an array list of 100 numbers, and then clearing it all at once # creating and deleting new100
+    new100 = np.array(random.sample(range(1, 101), 100))
+    print('A new list of 100 random numbers, called new100: ', new100)
+    startDelete100 = time.time()
+    new100cleared = new100[0:0]
+    endDelete100 = time.time()
+    durationDelete100 = endDelete100 - startDelete100
+    print("Printing the deleted array of 100 random numbers, cleared all at once using slice:", new100cleared)
     print('\n')
 
-    # These arrays are meant to be timed concerning the deletion of random numbers from an array
+    # deleting the array list of 100 random numbers using np.delete and slice # deleting array100
+    startDeleteSlice100 = time.time()
+    anotherClearedList = np.delete(array100, np.s_[::],)
+    endDeleteSlice100 = time.time()
+    durationDeleteSlice100 = endDeleteSlice100 - startDeleteSlice100
+
+    print('Printing the original list I created, array100, as cleared via np.delete and slice: ', anotherClearedList)
+    print('\n')
+
+    print("The duration of time it took to create an array list of 100 random numbers (array100 : ", duration100create)
+    print("The duration of time it took to delete the entire entire list, called newlist, array of 100 random " +
+          "numbers using slice: ", durationDelete100)
+    print("The duration of time it took to delete the entire entire array100 list, the original array of 100 random numbers, " +
+          "using np.delete and slice: ", durationDeleteSlice100)
+
+# **************************************************************************************************************
+
+    #print("Placing 1,000 random numbers into an array:")
+    #array1000 = str(random.sample(range(1, 1001), 1000))
+    #print(array1000)
+    #print('\n')
+
+
+
+
+# **************************************************************************************************************
+
+
+    #print("Placing 10,000 random numbers into an array:")
+    #array10000 = str(random.sample(range(1, 10001), 10000))
+    #print(array10000)
+    #print('\n')
+
+# # **************************************************************************************************************
 
 
 
