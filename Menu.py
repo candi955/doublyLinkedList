@@ -223,11 +223,17 @@ class mainMenu():
 
     print('\n')
 
-    userChoice = input('Please enter your command to utilize the DoublyLinkedList: ')
+    userChoice = str(input('Please enter your command to utilize the DoublyLinkedList: '))
 
-    if userChoice == 1:
-        print('hello')
+    if userChoice == "1":
+        userNum = str(input('Please enter the number your would like to place into the list:'))
+        chosenUserNum = int(userNum)
 
+
+        print('Please see your list as follows:')
+
+        newList.insert_in_emptylist(userNum)
+        newList.traverse_list()
 
 
 mainMenu()
