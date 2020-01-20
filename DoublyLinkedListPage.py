@@ -14,7 +14,8 @@
 # a variable to stand for the DoublyLinkedList() class, named new_linked_list.
 # I practiced traversing the list with a copy of an example from the referenced StackAbuse website, and now am ready to
 # begin the project by implementing various functionality including Find, Insert, Remove (data), Remove (node), and
-# Print.  
+# Print.
+# 1/19/2020 @ 19:21 - I have begun working on the Menu page for the user-menu. 
 
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 class Node:
