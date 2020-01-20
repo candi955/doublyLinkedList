@@ -1,7 +1,7 @@
 # This module is being utilized as a set-up and conceptuality page for the doubly-linked list concept.  A user can call
 # the various functions from the class DoublyLinkedList() to implement various doubly-linked list processes.
 # The output at this time fulfills the requirements of MS549 project Linked List, Phase 1, Testing, as well as the
-# insertion and deletion of random numbers. 
+# insertion and deletion of random numbers.
 
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 
@@ -27,6 +27,15 @@
 # was a good learning experience.
 # Now I am going to continue with the last parts of the project, with random number addition and deletion and timing
 # of these processes (on the DoublyLinkedListPage.py module.   I will then video my project and turn it in.
+
+# importing 'random' due to the random integers required for the final phase of the project
+# also importing 'time' in order to implement timing of the various random number experiments at the end of the
+# project, concerning arrays versus lists (timing comparisons of number insert and number deletion between both
+# types of lists)
+
+import random
+import time
+
 
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 class Node:
@@ -237,6 +246,20 @@ class DoublyLinkedList:
 
 DoublyLinkedList()
 
+class arrayClass():
+
+
+    def _removeAllArray_(self):
+
+        for i in list:
+            if i+1:
+                list.clear()
+            else:
+                print('Error')
+
+
+arrayClass()
+
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 
 class Main():
@@ -244,6 +267,7 @@ class Main():
     # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
     # creating a variable to call the DoublyLinkedList() class, from the StackAbuse example being referenced
     new_linked_list = DoublyLinkedList()
+    arraydel = arrayClass()
 
     # Showing that the list is empty
     print("Printing the empty list:")
@@ -312,6 +336,58 @@ class Main():
     new_linked_list.insert_after_item(50, 10), new_linked_list.insert_after_item(10, 300), new_linked_list.insert_at_end(1)
     new_linked_list.traverse_list()
     print('\n')
+
+    # Beginning the testing phase of the project
+    # I will be timing how long it takes to create arrays versus linked lists of random numbers, as well as how
+    # long it takes to delete the numbers.  I have decided to use the same amount of numbers for sampling, in case
+    # sampling might be a factor in the time (I will use 10,001, as the greatest amount of numbers I will choose
+    # for this experiment is 10,000, and I have to choose at least one more number (10,001), in order for the
+    # sampling to work in that case.  I understand proportion might also play some factor, but for the purposes of
+    # this experiment, maintaining integrity of sampling numbers across the various components should satisfy the
+    # requirements.
+
+
+    #  My array creations are as follows
+    # These first arrays are to time the inserting of random numbers into an array
+    print("Placing 100 random numbers into an array:")
+    for x in range(100):
+
+        start_time = time.time()
+        array100 = random.randint(1, 101)
+        array100 = [array100]
+        end_time = time.time()
+
+        duration = end_time - start_time
+        print('\nPrinting the duration of inserting 100 random numbers into the array:')
+        print(duration)
+
+        print(array100)
+        print('\n')
+
+        for i in array100:
+            if i + 1:
+
+                print("Clearing 100 random numbers from an array:")
+                array100.remove(i)
+                print(array100)
+                print('\n')
+            else:
+                print('Error')
+
+
+    print("Placing 1,000 random numbers into an array:")
+    array1000 = str(random.sample(range(1, 1001), 1000))
+    print(array1000)
+    print('\n')
+
+    print("Placing 10,000 random numbers into an array:")
+    array10000 = str(random.sample(range(1, 10001), 10000))
+    print(array10000)
+    print('\n')
+
+    # These arrays are meant to be timed concerning the deletion of random numbers from an array
+
+
 
 
     # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
