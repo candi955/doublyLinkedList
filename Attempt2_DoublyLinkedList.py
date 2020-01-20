@@ -182,7 +182,37 @@ class DoublyLinkedList:
             q = q.pref
         self.start_node = p
 
+    # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 
+    # Attempting to create a function for 'find'
+    def _findingElementByValue_(self,x):
+
+        if self.start_node is None:
+            print( "The list has no element to delete.")
+            return
+        if self.start_node.nref is None:
+            if self.start_node.item ==x:
+                self.start_node = self.start_node
+                print("We have found item ", x, "on the list.")
+            else:
+                print("Item not found.")
+                return
+
+            n = self.start_node
+            while n.nref is not None:
+                if n.item == x:
+                    print("We have found item ", x, "on the list again.")
+
+                    n = n.nref
+                if n.nref is not None:
+                    n.pref.nref = n.nref
+                    n.nref.pref = n.pref
+
+                else:
+                    if n.item == x:
+                        print("We have found item ", x, "on the list again.")
+                    else:
+                        print("Element not found.")
 
 
 DoublyLinkedList()
@@ -226,8 +256,6 @@ class Main():
     # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 
 Main()
-
-
 
 
 
