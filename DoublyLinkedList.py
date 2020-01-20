@@ -200,7 +200,7 @@ class DoublyLinkedList:
             return
 
         if self.start_node.item == x:
-            print("This is the item2.")
+            print("The number", x, "is the first number located on the list.")
             self.start_node = self.start_node
             self.start_node.pref = None
             return
@@ -208,19 +208,20 @@ class DoublyLinkedList:
         n = self.start_node
         while n.nref is not None:
             if n.item == x:
-                print("This could be the item.")
+                print("The number", x, "is one of the numbers located in the middle of the list.")
                 break
             n = n.nref
 
         # for finding the end number
         if n.nref is not None:
-            n.pref.nref = n.nref
+            #n.pref.nref = n.nref
             n.nref.pref = n.pref
         else:
             if n.item == x:
-                print("This is the item3.")
+                print("The number", x, "is the last number on the list.")
             else:
                 print("Element not found")
+
 
 DoublyLinkedList()
 
@@ -260,11 +261,46 @@ class Main():
     new_linked_list.traverse_list()
     print('\n')
 
-    print("Finding the number 10 to fulfill the assignment 'finding an element by value:")
+    print("Finding the number 300 to fulfill the assignment 'finding an element by value:")
     new_linked_list.find_element_by_value(300)
     print('\n')
+
+
+    print("Finding the number 5 to fulfill the assignment 'finding an element by value:")
+    new_linked_list.find_element_by_value(5)
+    print('\n')
+
+
+    print("Finding the number 10 to fulfill the assignment 'finding an element by value:")
+    new_linked_list.find_element_by_value(10)
+    print('\n')
+
+    print("Finding the number 18 to fulfill the assignment 'finding an element by value:")
+    new_linked_list.find_element_by_value(18)
+    print('\n')
+
+
+    print("Attempting to find a number not actually on the list (number 4) to fulfill the assignment 'finding an element by value:")
+    new_linked_list.find_element_by_value(4)
+    print('\n')
+
+    # Changing the list to an empty list
+    print("Deleting all numbers from the list:")
+    new_linked_list.delete_element_by_value(10), new_linked_list.delete_element_by_value(5), new_linked_list.delete_element_by_value(18),
+    new_linked_list.delete_element_by_value(300)
     new_linked_list.traverse_list()
     print('\n')
+
+    print("Now that the list is empty, will try to find the value 300:")
+    new_linked_list.find_element_by_value(300)
+    print('\n')
+
+    print("Attempting to create a new list of (6, 3, 50, 10, 300, 1) utilizing insert_at_start, insert_after_item, and insert_at_end:")
+    new_linked_list.insert_at_start(6), new_linked_list.insert_after_item(6, 3), new_linked_list.insert_after_item(3, 50),
+    new_linked_list.insert_after_item(50, 10), new_linked_list.insert_after_item(10, 300), new_linked_list.insert_at_end(1)
+    new_linked_list.traverse_list()
+    print('\n')
+
 
     # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 
