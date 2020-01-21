@@ -243,6 +243,39 @@ class DoublyLinkedList:
             else:
                 print("Element not found")
 
+    def delete_allElementsRandom100List(self, x):
+
+        for i in self:
+
+            if self.start_node is None:
+                print("The list has no element to delete")
+                return
+            if self.start_node.nref is None:
+                if self.start_node.item == x:
+                    self.start_node = None
+                else:
+                    print("Item not found")
+                return
+
+            if self.start_node.item == x:
+                self.start_node = self.start_node.nref
+                self.start_node.pref = None
+                return
+
+            n = self.start_node
+            while n.nref is not None:
+                if n.item == x:
+                    break;
+                n = n.nref
+            if n.nref is not None:
+                n.pref.nref = n.nref
+                n.nref.pref = n.pref
+            else:
+                if n.item == x:
+                    n.pref.nref = None
+                else:
+                    print("Element not found")
+
 
 DoublyLinkedList()
 
@@ -483,10 +516,13 @@ class Main():
     linkedList100.traverse_list()
     print('\n')
 
+    # Reference for attempting deletion:
+    # https://www.geeksforgeeks.org/delete-occurrences-given-key-doubly-linked-list/
+
 
     # deleting and timing the deletion of 1000 elements from mynewlinkedList100
     startDeleteLinked100 = time.time()
-    #linkedList100.delete_element_by_value(mynewLinkedList100, 5)
+    #linkedList100.delete_allElementsRandom100List(mynewLinkedList100, x=random.randint(0, 101))
     endDeleteLinked100 = time.time()
     durationDeleteLinked100 = endDeleteLinked100 - startDeleteLinked100
     #print('Here is is the doubly linked list mynewLinkedList100 with all elements deleted using the function _____:', mynewLinkedList100)
