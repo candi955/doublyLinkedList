@@ -246,19 +246,6 @@ class DoublyLinkedList:
 
 DoublyLinkedList()
 
-class arrayClass():
-
-
-    def _removeAllArray_(self):
-
-        for i in list:
-            if i+1:
-                list.clear()
-            else:
-                print('Error')
-
-
-arrayClass()
 
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 
@@ -267,7 +254,7 @@ class Main():
     # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
     # creating a variable to call the DoublyLinkedList() class, from the StackAbuse example being referenced
     new_linked_list = DoublyLinkedList()
-    arraydel = arrayClass()
+
 
     # Showing that the list is empty
     print("Printing the empty list:")
@@ -479,7 +466,6 @@ class Main():
 
     # The variables for the variable main utilization, doubly linked list classes with associated functions
     linkedList100 = DoublyLinkedList()
-    newarraydel = arrayClass()
 
     # Showing that the doubly linked list linkedList100 is empty
     print("Printing the empty doubly linked list linkedList100:")
