@@ -37,7 +37,6 @@ import random
 import time
 import numpy as np
 
-
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 class Node:
     def __init__(self, data):
@@ -381,6 +380,17 @@ class Main():
           "numbers using slice: ", durationDelete100)
     print("The duration of time it took to delete the entire entire array100 list, the original array of 100 random numbers, " +
           "using np.delete and slice: ", durationDeleteSlice100)
+    print('\n')
+
+    myOther100array = np.array(random.sample(range(1, 101), 100))
+    print('Here is another:', myOther100array)
+    print('\n')
+
+    myOther100array = myOther100array[99:0]
+
+    print('Here is is deleted:', myOther100array)
+
+
 
 # **************************************************************************************************************
 
