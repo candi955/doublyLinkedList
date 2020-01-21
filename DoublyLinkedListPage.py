@@ -5,6 +5,9 @@
 
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 
+# Another reference that was not used for this project but could be used for future projects that are similar:
+# https://www.tutorialcup.com/linked-list/delete-node-without-head.htm
+
 
 # 1/19/2020 @ 15:10 - This assignment is for MS549, Project: Linked List.  Initially I was attempting to either 'reinvent
 # the wheel' and create an entirely new programming code for the doubly linked list in python.  I began to realize that
@@ -32,6 +35,8 @@
 # also importing 'time' in order to implement timing of the various random number experiments at the end of the
 # project, concerning arrays versus lists (timing comparisons of number insert and number deletion between both
 # types of lists)
+# 1/21/2020 @ 14:24pm - I have completed creating the creation/deletion, and timing of such functionality concerning
+# the doubly linked lists of 100, 1000, and 10000 random numbers.
 
 import random
 import time
@@ -243,38 +248,31 @@ class DoublyLinkedList:
             else:
                 print("Element not found")
 
-    def delete_allElementsRandom100List(self, x):
+    def delete_AllElementsOfList(self, object):
 
-        for i in self:
+        for i in object:
+            if i + 1:
+                while True:
+                    try:
 
-            if self.start_node is None:
-                print("The list has no element to delete")
-                return
-            if self.start_node.nref is None:
-                if self.start_node.item == x:
-                    self.start_node = None
-                else:
-                    print("Item not found")
-                return
 
-            if self.start_node.item == x:
-                self.start_node = self.start_node.nref
-                self.start_node.pref = None
-                return
+                        if self.start_node is None:
+                            print("The list has no element to delete")
+                            return
+                        if self.start_node.nref is None:
+                            self.start_node = None
+                            return
+                        self.start_node = self.start_node.nref
+                        self.start_prev = None;
 
-            n = self.start_node
-            while n.nref is not None:
-                if n.item == x:
-                    break;
-                n = n.nref
-            if n.nref is not None:
-                n.pref.nref = n.nref
-                n.nref.pref = n.pref
-            else:
-                if n.item == x:
-                    n.pref.nref = None
-                else:
-                    print("Element not found")
+                    except ValueError:
+                        print('There has been an error')
+                    else:
+                        break
+
+
+
+
 
 
 DoublyLinkedList()
@@ -369,7 +367,8 @@ class Main():
     # requirements.
 
 # **************************************************************************************************************
-    print('**************************************************************************************************************')
+    print('********************************************************************************************************' +
+          '********************************************************************************************************')
 
     print('Starting my experiments with array lists of 100 random numbers by creating array list array100:')
     start_time100 = time.time()
@@ -490,9 +489,10 @@ class Main():
 
 
 # **************************************************************************************************************
-    print('**************************************************************************************************************')
+    print('********************************************************************************************************' +
+          '********************************************************************************************************')
 
-    print('Starting my experiments with doubly linked lists of 100 random numbers by creating doublylinked list doubly100:')
+    print('\n\nStarting my experiments with doubly linked lists of 100 random numbers by creating doublylinked list linkedList100:')
 
     # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
     # creating a variable to call the DoublyLinkedList() class, from the StackAbuse example being referenced
@@ -507,10 +507,10 @@ class Main():
 
 
     # Inserting 100 random numbers into linkedList100
-    print("Inserting 100 random numbers into doubly linked list mynewLinkedList100: ")
+    print("Inserting 100 random numbers into doubly linked list, linkedList100: ")
     startLinkedList100 = time.time()
-    mynewLinkedList100 = np.array(random.sample(range(1, 101), 100))
-    linkedList100.insert_in_emptylist(mynewLinkedList100)
+    randomNums100 = np.array(random.sample(range(1, 101), 100))
+    linkedList100.insert_in_emptylist(randomNums100)
     endLinkedList100 = time.time()
     durationLinkedList100 = endLinkedList100 - startLinkedList100
     linkedList100.traverse_list()
@@ -522,21 +522,131 @@ class Main():
 
     # deleting and timing the deletion of 1000 elements from mynewlinkedList100
     startDeleteLinked100 = time.time()
-    #linkedList100.delete_allElementsRandom100List(mynewLinkedList100, x=random.randint(0, 101))
+    linkedList100.delete_AllElementsOfList(randomNums100)
     endDeleteLinked100 = time.time()
     durationDeleteLinked100 = endDeleteLinked100 - startDeleteLinked100
-    #print('Here is is the doubly linked list mynewLinkedList100 with all elements deleted using the function _____:', mynewLinkedList100)
-    #print('\n')
+    print('Here is the list, linkedList100, after calling the function delete_AllElementsOfList():')
+    linkedList100.traverse_list()
+    print('\n')
 
 
     # Printing the timing durations of the random 1000 number array list creation and deletion
-    #print("The duration of time it took to create a doubly linked list of 100 random numbers (mynewLinkedList100), using " +
-    #      "(the function _____: ", durationLinkedList100)
-    #print('\n')
+    print("The duration of time it took to create a doubly linked list of 100 random numbers (linkedList100), using " +
+          "the function insert_in_emptylist: ", durationLinkedList100)
+    print('\n')
 
-    #print("The duration of time it took to delete the entire entire the mynewLinkedList100 doubly linked list " +
-    #    "the function _____: ", durationDeleteLinked100)
-    #print('\n')
+    print("The duration of time it took to delete the entire entire the mynewLinkedList100 doubly linked list " +
+        "the function delete_AllElementsOfList: ", durationDeleteLinked100)
+    print('\n')
+
+    # **************************************************************************************************************
+    # Beginning to insert 1000 random numbers into a doubly linked list, and then delete all and time all of the various
+    # functionalities
+
+    print('____________________________________________________________________________________________________')
+
+    print('Starting my experiments with doubly linked lists of 1000 random numbers by creating doublylinked list linkedList1000:')
+
+    # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
+    # creating a variable to call the DoublyLinkedList() class, from the StackAbuse example being referenced
+
+    # The variables for the variable main utilization, doubly linked list classes with associated functions
+    linkedList1000 = DoublyLinkedList()
+
+    # Showing that the doubly linked list linkedList1000 is empty
+    print("Printing the empty doubly linked list linkedList1000:")
+    linkedList1000.traverse_list()
+    print('\n')
+
+
+    # Inserting 1000 random numbers into linkedList1000
+    print("Inserting 1000 random numbers into doubly linked list, linkedList1000: ")
+    startLinkedList1000 = time.time()
+    randomNums1000 = np.array(random.sample(range(1, 1001), 1000))
+    linkedList1000.insert_in_emptylist(randomNums1000)
+    endLinkedList1000 = time.time()
+    durationLinkedList1000 = endLinkedList1000 - startLinkedList1000
+    linkedList1000.traverse_list()
+    print('\n')
+
+    # Reference for attempting deletion:
+    # https://www.geeksforgeeks.org/delete-occurrences-given-key-doubly-linked-list/
+
+
+    # deleting and timing the deletion of 1000 elements from mynewlinkedList1000
+    startDeleteLinked1000 = time.time()
+    linkedList1000.delete_AllElementsOfList(randomNums1000)
+    endDeleteLinked1000 = time.time()
+    durationDeleteLinked1000 = endDeleteLinked1000 - startDeleteLinked1000
+    print('Here is the list, linkedList1000, after calling the function delete_AllElementsOfList():')
+    linkedList1000.traverse_list()
+    print('\n')
+
+
+    # Printing the timing durations of the random 1000 number array list creation and deletion
+    print("The duration of time it took to create a doubly linked list of 1000 random numbers (linkedList1000), using " +
+          "the function insert_in_emptylist: ", durationLinkedList1000)
+    print('\n')
+
+    print("The duration of time it took to delete the entire entire the mynewLinkedList1000 doubly linked list " +
+        "the function delete_AllElementsOfList: ", durationDeleteLinked1000)
+    print('\n')
+
+
+
+    # **************************************************************************************************************
+    # Beginning to insert 1000 random numbers into a doubly linked list, and then delete all and time all of the various
+    # functionalities
+
+    print('____________________________________________________________________________________________________')
+
+    print('Starting my experiments with doubly linked lists of 10,000 random numbers by creating doublylinked list linkedList10000:')
+
+    # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
+    # creating a variable to call the DoublyLinkedList() class, from the StackAbuse example being referenced
+
+    # The variables for the variable main utilization, doubly linked list classes with associated functions
+    linkedList10000 = DoublyLinkedList()
+
+    # Showing that the doubly linked list linkedList1000 is empty
+    print("Printing the empty doubly linked list linkedList10000:")
+    linkedList10000.traverse_list()
+    print('\n')
+
+
+    # Inserting 10000 random numbers into linkedList1000
+    print("Inserting 10,000 random numbers into doubly linked list, linkedList10000: ")
+    startLinkedList10000 = time.time()
+    randomNums10000 = np.array(random.sample(range(1, 10001), 10000))
+    linkedList10000.insert_in_emptylist(randomNums10000)
+    endLinkedList10000 = time.time()
+    durationLinkedList10000 = endLinkedList10000 - startLinkedList10000
+    linkedList10000.traverse_list()
+    print('\n')
+
+    # Reference for attempting deletion:
+    # https://www.geeksforgeeks.org/delete-occurrences-given-key-doubly-linked-list/
+
+
+    # deleting and timing the deletion of 10,000 elements from mynewlinkedList10000
+    startDeleteLinked10000 = time.time()
+    linkedList10000.delete_AllElementsOfList(randomNums10000)
+    endDeleteLinked10000 = time.time()
+    durationDeleteLinked10000 = endDeleteLinked10000 - startDeleteLinked10000
+    print('Here is the list, linkedList10000, after calling the function delete_AllElementsOfList():')
+    linkedList10000.traverse_list()
+    print('\n')
+
+
+    # Printing the timing durations of the random 10,000 number array list creation and deletion
+    print("The duration of time it took to create a doubly linked list of 10,000 random numbers (linkedList10000), using " +
+          "the function insert_in_emptylist: ", durationLinkedList10000)
+    print('\n')
+
+    print("The duration of time it took to delete the entire entire the mynewLinkedList10000 doubly linked list " +
+        "the function delete_AllElementsOfList: ", durationDeleteLinked10000)
+    print('\n')
+
 
     # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 
