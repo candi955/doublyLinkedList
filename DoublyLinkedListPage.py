@@ -349,6 +349,8 @@ class Main():
     # requirements.
 
 # **************************************************************************************************************
+    # Starting my experiments with array lists of 100 random numbers:
+    print('Starting my experiments with array lists of 100 random numbers:')
     start_time100 = time.time()
     array100 = np.array(random.sample(range(1, 101), 100))
     end_time100 = time.time()
@@ -363,7 +365,7 @@ class Main():
     new100cleared = new100[0:0]
     endDelete100 = time.time()
     durationDelete100 = endDelete100 - startDelete100
-    print("Printing the deleted array of 100 random numbers, cleared all at once using slice:", new100cleared)
+    print("Printing the deleted array of 100 random numbers, cleared all at once using slice (new100[0:0]):", new100cleared)
     print('\n')
 
     # deleting the array list of 100 random numbers using np.delete and slice # deleting array100
@@ -372,34 +374,67 @@ class Main():
     endDeleteSlice100 = time.time()
     durationDeleteSlice100 = endDeleteSlice100 - startDeleteSlice100
 
-    print('Printing the original list I created, array100, as cleared via np.delete and slice: ', anotherClearedList)
+    print('Printing the original list I created, array100, as cleared via np.delete and slice (np.delete(array100, np.s_[::],) : ', anotherClearedList)
     print('\n')
 
-    print("The duration of time it took to create an array list of 100 random numbers (array100 : ", duration100create)
-    print("The duration of time it took to delete the entire entire list, called newlist, array of 100 random " +
-          "numbers using slice: ", durationDelete100)
-    print("The duration of time it took to delete the entire entire array100 list, the original array of 100 random numbers, " +
-          "using np.delete and slice: ", durationDeleteSlice100)
-    print('\n')
-
+    # creating another random list of 100 and attempting slice in a different way to delete # myOther100array
     myOther100array = np.array(random.sample(range(1, 101), 100))
-    print('Here is another:', myOther100array)
+    print('Here is another list of 100 random integers called myOther100array:', myOther100array)
+    print('\n')
+    # deleting and timing the deletion of the elements from the array using slice
+    startDeleteAnotherArray = time.time()
+    myOther100array = myOther100array[99:0]
+    endDeleteAnotherArray = time.time()
+    durationDeleteAnotherArray = endDeleteAnotherArray - startDeleteAnotherArray
+    print('Here is is myOther100array with all elements deleted using a form of slice myOther100array[99:0]:', myOther100array)
     print('\n')
 
-    myOther100array = myOther100array[99:0]
 
-    print('Here is is deleted:', myOther100array)
+
+    # printing all of the timing durations of the random 100 number array lists
+    print("The duration of time it took to create an array list of 100 random numbers (array100), using np.array(random.sample(range(1, 101), 100)): ", duration100create)
+    print('\n')
+
+    print("The duration of time it took to delete the entire entire list, called newlist, array of 100 random " +
+          "numbers using slice new100[0:0]: ", durationDelete100)
+    print("The duration of time it took to delete the entire entire array100 list, the original array of 100 random numbers, " +
+          "using np.delete and slice (np.delete(array100, np.s_[::],): ", durationDeleteSlice100)
+    print("The duration of time it took to delete the entire entire myOther100 array list " +
+        "myOther100array[99:0]: ", durationDeleteAnotherArray)
+    print('\n')
 
 
 
 # **************************************************************************************************************
+    # Starting my experiments with array lists of 1000 random numbers:
+    print('Starting my experiments with array lists of 1000 random numbers are as follows.')
+    print('Printing the list array1000:')
+    start_time1000 = time.time()
+    array1000 = np.array(random.sample(range(1, 1001), 1000))
+    end_time1000 = time.time()
+    duration1000create = end_time1000 - start_time1000
+    print(array1000)
+    print('\n')
 
-    #print("Placing 1,000 random numbers into an array:")
-    #array1000 = str(random.sample(range(1, 1001), 1000))
-    #print(array1000)
-    #print('\n')
+    # deleting and timing the deletion of 1000 elements from the array using slice
+    startDeleteArray1000 = time.time()
+    array1000 = array1000[99:0]
+    endDeleteArray1000 = time.time()
+    durationDeleteArray1000 = endDeleteArray1000 - startDeleteArray1000
+    print('Here is is the array list array1000 with all elements deleted using a form of slice array1000[99:0]:', array1000)
+    print('\n')
 
 
+
+
+    # printing all of the timing durations of the random 100 number array lists
+    print("The duration of time it took to create an array list of 1000 random numbers (array1000), using np.array " +
+          "(random.sample(range(1, 1001), 1000)): ", duration1000create)
+    print('\n')
+
+    print("The duration of time it took to delete the entire entire the array1000 array list " +
+        "array1000[99:0]: ", durationDeleteArray1000)
+    print('\n')
 
 
 # **************************************************************************************************************
