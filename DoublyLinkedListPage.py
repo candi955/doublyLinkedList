@@ -44,7 +44,6 @@
 import random
 import time
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 
 
@@ -275,11 +274,6 @@ class DoublyLinkedList:
                         print('There has been an error')
                     else:
                         break
-
-
-
-
-
 
 DoublyLinkedList()
 
@@ -699,8 +693,6 @@ class Main():
 
 
     print(data)
-
-
 
 
 Main()
