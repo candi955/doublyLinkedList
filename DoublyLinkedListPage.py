@@ -45,6 +45,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
+
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 class Node:
     def __init__(self, data):
@@ -672,33 +673,33 @@ class Main():
           '********************************************************************************************************')
 
     # Creating a table to show the time durations for various processes implemented throughout this project
-    # reference: https://matplotlib.org/gallery/misc/table_demo.html#sphx-glr-gallery-misc-table-demo-py
+    # main reference: https://pandas.pydata.org/pandas-docs/version/0.15/10min.html
+    # other references: https://matplotlib.org/gallery/misc/table_demo.html#sphx-glr-gallery-misc-table-demo-py
+    # https://matplotlib.org/gallery/index.html
+    # https://matplotlib.org/api/table_api.html?highlight=table#module-matplotlib.table
     print('\nCreating a table to show the time durations for various processes implemented throughout this project:\n')
 
-    data = [[printEmptyDuration, Adding50Duration, deleteFourDuration, 'NA', 'NA', 'NA', 'NA', 'NA', 'NA'],
-            ['NA', 'NA', 'NA', duration100create, duration1000create, duration10000create, durationDeleteAnotherArray,
-             durationDeleteArray1000, durationDeleteArray10000],
-            ['NA', 'NA', 'NA', durationLinkedList100, durationLinkedList1000, durationLinkedList10000,
-             durationDeleteLinked100, durationDeleteLinked1000, durationDeleteLinked10000]],
+    data = pd.DataFrame({ '|' : ('Creating empty doubly linked list |', 'Adding 50 numbers to empty doubly linked list |',
+                        'Deleting 4 numbers from the list, one-by-one |', 'Insert 100 Random |', 'Insert 1000 Random |',
+                        'Insert 10,000 Random |', 'Delete 100 Random |', 'Delete 1000 Random |', 'Delete 10,000 Random |'),
+                        'Custom' : (printEmptyDuration, Adding50Duration, deleteFourDuration, 'NA','NA', 'NA', 'NA', 'NA', 'NA'),
+                        'Array/Vector (Random #s)' : ('NA', 'NA', 'NA', duration100create, duration1000create, duration10000create, durationDeleteAnotherArray,
+                        durationDeleteArray1000, durationDeleteArray10000),
+                        'Doubly-Linked(Random #s' : ('NA', 'NA', 'NA', durationLinkedList100, durationLinkedList1000, durationLinkedList10000,
+                        durationDeleteLinked100, durationDeleteLinked1000, durationDeleteLinked10000)})
+
+    # reference for how to print entire dataset and not just part of it, as shown below:
+    # https://stackoverflow.com/questions/11707586/how-do-i-expand-the-output-display-to-see-more-columns-of-a-pandas-dataframe
+
+    pd.set_option('display.max_rows', 500)
+    pd.set_option('display.max_columns', 500)
+    pd.set_option('display.width', 1000)
 
 
-    datacolumns = ('Creating empty doubly linked list', 'Adding 50 numbers to empty doubly linked list',
-               'Deleting 4 numbers from the list, one-by-one', 'Insert 100 Random', 'Insert 1000 Random',
-               'Insert 10,000 Random', 'Delete 100 Random', 'Delete 1000 Random', 'Delete 10,000 Random')
-    #datarows = (['Custom', 'Array/Vector', 'Doubly Linked'])
-
-    fig, ax = plt.subplots()
-
-    # hide axes so is table only
-    ax.xaxis.set_visible(False)
-    ax.yaxis.set_visible(False)
-
-    ax.table(cellText=data, loc='center', colLabels=datacolumns) #, rowLabels=datarows)
-
-    fig.tight_layout()
+    print(data)
 
 
-    plt.show()
+
 
 Main()
 
