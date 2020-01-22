@@ -36,11 +36,14 @@
 # project, concerning arrays versus lists (timing comparisons of number insert and number deletion between both
 # types of lists)
 # 1/21/2020 @ 14:24pm - I have completed creating the creation/deletion, and timing of such functionality concerning
-# the doubly linked lists of 100, 1000, and 10000 random numbers.
+# the doubly linked lists of 100, 1000, and 10000 random numbers. Importing matplotlib.pyplot as plt to help with
+# the creation of the table.
 
 import random
 import time
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
 # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 class Node:
@@ -289,14 +292,23 @@ class Main():
 
     # Showing that the list is empty
     print("Printing the empty list:")
+    printEmptyStart = time.time()
     new_linked_list.traverse_list()
+    printEmptyEnd = time.time()
+    printEmptyDuration = printEmptyEnd - printEmptyStart
+    print('\nThe time duration for printing an empty doubly linked list is: ', printEmptyDuration)
+
     print('\n')
 
 
     # From the StackAbuse example being referenced, inserting the number 50 into the list (technically at the end of the list
     print("Adding the number 50 to the empty list:")
+    Adding50Start = time.time()
     new_linked_list.insert_in_emptylist(50)
+    Adding50End = time.time()
+    Adding50Duration = Adding50End - Adding50Start
     new_linked_list.traverse_list()
+    print('\nThe time duration for adding 50 numbers to an empty doubly linked list is: ', Adding50Duration)
     print('\n')
 
     # From the StackAbuse example being referenced, inserting the numbers 10, 5, and then 18 to the beginning of the list
@@ -339,10 +351,15 @@ class Main():
     print('\n')
 
     # Changing the list to an empty list
-    print("Deleting all numbers from the list:")
+    print("Deleting four numbers from the list, one-by-one:")
+    deleteFourStart = time.time()
     new_linked_list.delete_element_by_value(10), new_linked_list.delete_element_by_value(5), new_linked_list.delete_element_by_value(18),
     new_linked_list.delete_element_by_value(300)
+    deleteFourEnd = time.time()
+    deleteFourDuration = deleteFourEnd - deleteFourStart
     new_linked_list.traverse_list()
+    print('\nThe amount of time it takes to delete four numbers from the doubly link list, to empty it, one-by-one ' +
+          ', is:', deleteFourDuration)
     print('\n')
 
     print("Now that the list is empty, will try to find the value 300:")
@@ -649,6 +666,39 @@ class Main():
 
 
     # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
+
+    # **************************************************************************************************************
+    print('********************************************************************************************************' +
+          '********************************************************************************************************')
+
+    # Creating a table to show the time durations for various processes implemented throughout this project
+    # reference: https://matplotlib.org/gallery/misc/table_demo.html#sphx-glr-gallery-misc-table-demo-py
+    print('\nCreating a table to show the time durations for various processes implemented throughout this project:\n')
+
+    data = [[printEmptyDuration, Adding50Duration, deleteFourDuration, 'NA', 'NA', 'NA', 'NA', 'NA', 'NA'],
+            ['NA', 'NA', 'NA', duration100create, duration1000create, duration10000create, durationDeleteAnotherArray,
+             durationDeleteArray1000, durationDeleteArray10000],
+            ['NA', 'NA', 'NA', durationLinkedList100, durationLinkedList1000, durationLinkedList10000,
+             durationDeleteLinked100, durationDeleteLinked1000, durationDeleteLinked10000]],
+
+
+    datacolumns = ('Creating empty doubly linked list', 'Adding 50 numbers to empty doubly linked list',
+               'Deleting 4 numbers from the list, one-by-one', 'Insert 100 Random', 'Insert 1000 Random',
+               'Insert 10,000 Random', 'Delete 100 Random', 'Delete 1000 Random', 'Delete 10,000 Random')
+    #datarows = (['Custom', 'Array/Vector', 'Doubly Linked'])
+
+    fig, ax = plt.subplots()
+
+    # hide axes so is table only
+    ax.xaxis.set_visible(False)
+    ax.yaxis.set_visible(False)
+
+    ax.table(cellText=data, loc='center', colLabels=datacolumns) #, rowLabels=datarows)
+
+    fig.tight_layout()
+
+
+    plt.show()
 
 Main()
 
