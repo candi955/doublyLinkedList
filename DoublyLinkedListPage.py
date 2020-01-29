@@ -492,7 +492,7 @@ class Main():
     print('\n')
 
 
-    # printing the timing durations of the random 1000 number array list creation and deletion
+    # printing the timing durations of the random 10000 number array list creation and deletion
     print("The duration of time it took to create an array list of 10000 random numbers (array10000), using np.array " +
           "(random.sample(range(1, 10001), 10000)): ", duration10000create)
     print('\n')
@@ -501,8 +501,39 @@ class Main():
         "array10000[99:0]: ", durationDeleteArray10000)
     print('\n')
 
+###
 
-# **************************************************************************************************************
+    # **************************************************************************************************************
+    print('____________________________________________________________________________________________________')
+    # Starting my experiments with array lists of 100,000 random numbers:
+    print('Starting my experiments with array lists of 100,000 random numbers are as follows.')
+    print('Printing the list array100,000:')
+    start_time100000 = time.time()
+    array100000 = np.array(random.sample(range(1, 100001), 100000))
+    end_time100000 = time.time()
+    duration100000create = end_time100000 - start_time100000
+    print(array100000)
+    print('\n')
+
+    # deleting and timing the deletion of 100,000 elements from the array using slice
+    startDeleteArray100000 = time.time()
+    array100000 = array100000[99:0]
+    endDeleteArray100000 = time.time()
+    durationDeleteArray100000 = endDeleteArray100000 - startDeleteArray100000
+    print('Here is is the array list array100000 with all elements deleted using a form of slice array100000[99:0]:',
+          array100000)
+    print('\n')
+
+    # printing the timing durations of the random 100,000 number array list creation and deletion
+    print("The duration of time it took to create an array list of 100,000 random numbers (array100000), using np.array " +
+          "(random.sample(range(1, 100001), 100000)): ", duration100000create)
+    print('\n')
+
+    print("The duration of time it took to delete the entire entire the array100,000 array list " +
+          "array100000[99:0]: ", durationDeleteArray100000)
+    print('\n')
+
+    # **************************************************************************************************************
     print('********************************************************************************************************' +
           '********************************************************************************************************')
 
@@ -609,7 +640,7 @@ class Main():
 
 
     # **************************************************************************************************************
-    # Beginning to insert 1000 random numbers into a doubly linked list, and then delete all and time all of the various
+    # Beginning to insert 10,000 random numbers into a doubly linked list, and then delete all and time all of the various
     # functionalities
 
     print('____________________________________________________________________________________________________')
@@ -664,6 +695,62 @@ class Main():
 
     # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
 
+    ###
+
+    # **************************************************************************************************************
+    # Beginning to insert 100,000 random numbers into a doubly linked list, and then delete all and time all of the various
+    # functionalities
+
+    print('____________________________________________________________________________________________________')
+
+    print(
+        'Starting my experiments with doubly linked lists of 100,000 random numbers by creating doublylinked list linkedList10000:')
+
+    # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
+    # creating a variable to call the DoublyLinkedList() class, from the StackAbuse example being referenced
+
+    # The variables for the variable main utilization, doubly linked list classes with associated functions
+    linkedList100000 = DoublyLinkedList()
+
+    # Showing that the doubly linked list linkedList100,000 is empty
+    print("Printing the empty doubly linked list linkedList100000:")
+    linkedList100000.traverse_list()
+    print('\n')
+
+    # Inserting 100,000 random numbers into linkedList100000
+    print("Inserting 100,000 random numbers into doubly linked list, linkedList100000: ")
+    startLinkedList100000 = time.time()
+    randomNums100000 = np.array(random.sample(range(1, 100001), 100000))
+    linkedList100000.insert_in_emptylist(randomNums100000)
+    endLinkedList100000 = time.time()
+    durationLinkedList100000 = endLinkedList100000 - startLinkedList100000
+    linkedList100000.traverse_list()
+    print('\n')
+
+    # Reference for attempting deletion:
+    # https://www.geeksforgeeks.org/delete-occurrences-given-key-doubly-linked-list/
+
+    # deleting and timing the deletion of 100,000 elements from mynewlinkedList10000
+    startDeleteLinked100000 = time.time()
+    linkedList100000.delete_AllElementsOfList(randomNums100000)
+    endDeleteLinked100000 = time.time()
+    durationDeleteLinked100000 = endDeleteLinked100000 - startDeleteLinked100000
+    print('Here is the list, linkedList100000, after calling the function delete_AllElementsOfList():')
+    linkedList100000.traverse_list()
+    print('\n')
+
+    # Printing the timing durations of the random 100,000 number array list creation and deletion
+    print(
+        "The duration of time it took to create a doubly linked list of 100,000 random numbers (linkedList100000), using " +
+        "the function insert_in_emptylist: ", durationLinkedList100000)
+    print('\n')
+
+    print("The duration of time it took to delete the entire entire the mynewLinkedList100000 doubly linked list " +
+          "the function delete_AllElementsOfList: ", durationDeleteLinked100000)
+    print('\n')
+
+    # Reference: https://stackabuse.com/doubly-linked-list-with-python-examples/
+
     # **************************************************************************************************************
     print('********************************************************************************************************' +
           '********************************************************************************************************')
@@ -677,12 +764,12 @@ class Main():
 
     data = pd.DataFrame({ '|' : ('Creating empty doubly linked list |', 'Adding 50 numbers to empty doubly linked list |',
                         'Deleting 4 numbers from the list, one-by-one |', 'Insert 100 Random |', 'Insert 1000 Random |',
-                        'Insert 10,000 Random |', 'Delete 100 Random |', 'Delete 1000 Random |', 'Delete 10,000 Random |'),
-                        'Custom' : (printEmptyDuration, Adding50Duration, deleteFourDuration, 'NA','NA', 'NA', 'NA', 'NA', 'NA'),
-                        'Array/Vector (Random #s)' : ('NA', 'NA', 'NA', duration100create, duration1000create, duration10000create, durationDeleteAnotherArray,
-                        durationDeleteArray1000, durationDeleteArray10000),
-                        'Doubly-Linked(Random #s' : ('NA', 'NA', 'NA', durationLinkedList100, durationLinkedList1000, durationLinkedList10000,
-                        durationDeleteLinked100, durationDeleteLinked1000, durationDeleteLinked10000)})
+                        'Insert 10,000 Random |','Insert 100,000 Random |', 'Delete 100 Random |', 'Delete 1000 Random |', 'Delete 10,000 Random |', 'Delete 100,000 Random |'),
+                        'Custom' : (printEmptyDuration, Adding50Duration, deleteFourDuration, 'NA','NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA'),
+                        'Array/Vector (Random #s)' : ('NA', 'NA', 'NA', duration100create, duration1000create, duration10000create, duration100000create, durationDeleteAnotherArray,
+                        durationDeleteArray1000, durationDeleteArray10000, durationDeleteArray100000),
+                        'Doubly-Linked(Random #s' : ('NA', 'NA', 'NA', durationLinkedList100, durationLinkedList1000, durationLinkedList10000, durationLinkedList100000,
+                        durationDeleteLinked100, durationDeleteLinked1000, durationDeleteLinked10000, durationDeleteLinked100000)})
 
     # reference for how to print entire dataset and not just part of it, as shown below:
     # https://stackoverflow.com/questions/11707586/how-do-i-expand-the-output-display-to-see-more-columns-of-a-pandas-dataframe
@@ -696,6 +783,3 @@ class Main():
 
 
 Main()
-
-
-
